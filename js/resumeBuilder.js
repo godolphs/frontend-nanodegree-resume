@@ -3,7 +3,7 @@ var bio = {
 	"role": "Web Developer",
 	"welcomeMessage": "Hello! Thank you for viewing my resume.",
 	"picture": "images/me.jpg",
-	"skills": ["FrontEnd Web Development", "HTML", "CSS", "JavaScript", "jQuery", "Git Hub", "Git Bash", "Great Team Player", "Finance Background"],
+	"skills": ["Front-End Web Development", "HTML", "CSS", "JavaScript", "jQuery", "Git Hub", "Git Bash", "Great Team Player", "Finance Background"],
 	"contacts": { 
 		"emailAddress": "mikemuller@optonline.net",
 		"mobileNum": "973-713-7813",
