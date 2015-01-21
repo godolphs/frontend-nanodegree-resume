@@ -3,7 +3,7 @@ var bio = {
 	"role": "Web Developer",
 	"welcomeMessage": "Hello! Thank you for viewing my resume.",
 	"picture": "images/me.jpg",
-	"skills": ["Web Programming", "GIT Hub", "Great Team Player", "Finance Background"],
+	"skills": ["FrontEnd Web Development", "HTML", "CSS", "JavaScript", "jQuery", "Git Hub", "Git Bash", "Great Team Player", "Finance Background"],
 	"contacts": { 
 		"emailAddress": "mikemuller@optonline.net",
 		"mobileNum": "973-713-7813",
@@ -19,8 +19,15 @@ var education = {
 		"name": "Rider University",
 		"location": "Lawrenceville, NJ",
 		"degree": "Bachelor of Science",
-		"dates": "1989",
+		"dates": "1986 - 1989",
 		"majors": "Accounting, Computer Programming and Decision Sciences"
+		},
+
+		{
+		"name": "Bridgewater College",
+		"location": "Bridgewater, VA",
+		"dates": "1983 - 1986",
+		"majors": "none - Transferred to Rider University"
 		}
 	],
 
@@ -166,6 +173,7 @@ var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
 var formattedGitHub = HTMLgithub.replace("%data%",bio.contacts.github);
 var formattedSkills = HTMLskills.replace("%data%",bio.skills);
 
+$("#header").prepend(internationalizeButton);
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
 $("#topContacts").append(formattedEmail);
@@ -173,8 +181,8 @@ $("#topContacts").append(formattedMobile);
 $("#topContacts").append(formattedLocation);
 $("#topContacts").append(formattedTwitter);
 $("#topContacts").append(formattedGitHub);
-$("#header").append(formattedBioPic);
 $("#header").append(formattedMessage);
+$("#header").append(formattedBioPic);
 
 if (bio.skills.length > 0) {
 	$("#header").append(HTMLskillsStart);
@@ -322,4 +330,9 @@ $("#footerContacts").append(formattedLocation);
 $("#footerContacts").append(formattedTwitter);
 $("#footerContacts").append(formattedGitHub);
 
-$("#main").append(internationalizeButton);
+function inName(name) {
+  name = bio.name.trim().split(" ");
+  name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+  name[1] = name[1].toUpperCase();
+  return name[0] + " " + name[1];
+}

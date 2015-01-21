@@ -21,9 +21,9 @@ var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span
 var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
 
 var HTMLbioPic = '<img src="%data%" class="biopic">';
-var HTMLWelcomeMsg = '<span class="welcome-message">%data%</span>';
+var HTMLWelcomeMsg = '<div><span class="welcome-message">%data%</span></div><br>';
 
-var HTMLskillsStart = '<h3 id="skillsH3">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
+var HTMLskillsStart = '<h3 id="skillsH3">Skills at a Glance:</h3><ul id="skills"></ul>';
 var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
 
 var HTMLworkStart = '<div class="work-entry"></div>';
@@ -71,13 +71,6 @@ $(document).ready(function() {
     $('#name').html(iName);  
   });
 });
-
-function inName(name) {
-  name = name.trim().split(" ");
-  name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
-  name[1] = name[1].toUpperCase();
-  return name[0] + " " + name[1];
-}
 
 /*
 The next few lines about clicks are for the Collecting Click Locations quiz in Lesson 2.
