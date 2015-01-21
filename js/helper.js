@@ -75,6 +75,13 @@ $(document).ready(function() {
   });
 });
 
+function inName(name) {
+  name = name.trim().split(" ");
+  name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+  name[1] = name[1].toUpperCase();
+  return name[0] + " " + name[1];
+}
+
 /*
 The next few lines about clicks are for the Collecting Click Locations quiz in Lesson 2.
 */
