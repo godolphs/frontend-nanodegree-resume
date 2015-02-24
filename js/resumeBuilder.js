@@ -1,3 +1,5 @@
+// Displyay Bio Section //
+
 var bio = {
 	"name": "Michael Muller",
 	"role": "Web Developer",
@@ -12,6 +14,49 @@ var bio = {
 		"location": "Branchburg, NJ"
 	}
 };
+
+
+
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+var formattedBioPic = HTMLbioPic.replace("%data%", bio.picture);
+var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
+var formattedEmail = HTMLemail.replace("%data%", bio.contacts.emailAddress);
+var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobileNum);
+var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+var formattedGitHub = HTMLgithub.replace("%data%",bio.contacts.github);
+var formattedSkills = HTMLskills.replace("%data%",bio.skills);
+
+function displayBio() {
+	$("#header").prepend(internationalizeButton);
+	$("#header").prepend(formattedRole);
+	$("#header").prepend(formattedName);
+	$("#topContacts").append(formattedEmail);
+	$("#topContacts").append(formattedMobile);
+	$("#topContacts").append(formattedLocation);
+	$("#topContacts").append(formattedTwitter);
+	$("#topContacts").append(formattedGitHub);
+	$("#header").append(formattedMessage);
+	$("#header").append(formattedBioPic);
+
+
+if (bio.skills.length > 0) {
+	$("#header").append(HTMLskillsStart);
+
+	for (skill in bio.skills) {
+		var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+		$("#skills").append(formattedSkill);
+		}
+	}
+}
+
+displayBio();
+
+// End Display Bio Section //
+
+
+// Display Education Section //
 
 var education = {
 	"schools": [
@@ -90,169 +135,6 @@ var education = {
 	]
 };
 
-var projects = {
-	"projects": [
-		{
-		"title": "Website Mockup",
-		"dates": "November 2014",
-		"description": "Developed webpage from sample design.",
-		"images": ["images/mug.png"]
-		},
-			
-		{
-		"title": "NJ Mystery Company Website",
-		"dates": "June 2014",
-		"description": "Created new website for new business.",
-		"images": ["images/njmc.jpg"]
-		},
-
-		{
-		"title": "Somerset Vally Players",
-		"dates": "March 2008",
-		"description" : "Programmed and implemented online theater ticketing system.  Also mainted pre-designed organization website.",
-		"images": ["images/svp.jpg"]
-		}
-	]
-};
-
-var work = {
-	"jobs": [
-		{
-		"employer": "AT&T", 
-		"title": "Lead Financial Analyst",
-		"dates": "2005 - present",
-		"location": "Bedminster, NJ",
-		"description": "Responsible for developement of short-term and long-term financial planning for two supply chain organizations.  Also repsonsbile for html coding of there financial team websites."
-		},
-
-		{
-		"employer": "AT&T", 
-		"title": "Contract Employee - Budget Manager",
-		"dates": "2003 - 2005",
-		"location": "Bedminster, NJ",
-		"description": "Responsible for developement of budgets and monthly financial reporting."
-		},
-		
-		{
-		"employer": "Alliente", 
-		"title": "Assistant Controller",
-		"dates": "2000 - 2003",
-		"location": "Morris Plains, NJ",
-		"description": "Responsible for monthly bookclose activities and annual budgeting process."
-		},
-
-		{
-		"employer": "Lucent Technologies", 
-		"title": "SAP Implementation Manager",
-		"location": "Greensboro, NC",
-		"dates": "1996 - 2000",
-		"description": "Interfaced between project management, finance orgnizations, SAP programmers, and conlsutants to ensure all financial requirements were identified and programmed appropriately in the Lucent Technoligies implementation of the SAP software."
-		},
-
-		{
-		"employer": "AT&T", 
-		"title": "Corporate Reporting and Planning Manager",
-		"dates": "1988 - 1996",
-		"location": "Morristown, NJ",
-		"description": "Responsible for all monthly reporting and annual financial planning."
-		}
-	] 
-};
-
-
-// Displyay Bio Section //
-
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedBioPic = HTMLbioPic.replace("%data%", bio.picture);
-var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
-var formattedEmail = HTMLemail.replace("%data%", bio.contacts.emailAddress);
-var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobileNum);
-var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-var formattedGitHub = HTMLgithub.replace("%data%",bio.contacts.github);
-var formattedSkills = HTMLskills.replace("%data%",bio.skills);
-
-$("#header").prepend(internationalizeButton);
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-$("#topContacts").append(formattedEmail);
-$("#topContacts").append(formattedMobile);
-$("#topContacts").append(formattedLocation);
-$("#topContacts").append(formattedTwitter);
-$("#topContacts").append(formattedGitHub);
-$("#header").append(formattedMessage);
-$("#header").append(formattedBioPic);
-
-if (bio.skills.length > 0) {
-	$("#header").append(HTMLskillsStart);
-
-	for (skill in bio.skills) {
-		var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
-		$("#skills").append(formattedSkill);
-	}
-}
-
-// End Display Bio Section //
-
-// Display Work Section //
-
-function displayWork() {
-
-	for (job in work.jobs) {
-		$("#workExperience").append(HTMLworkStart);
-
-		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-		var formattedEmployerTitle = formattedEmployer + formattedTitle;
-
-		$(".work-entry:last").append(formattedEmployerTitle);
-
-		var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-		$(".work-entry:last").append(formattedWorkDates);
-	
-		var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-		$(".work-entry:last").append(formattedWorkLocation);
-
-		var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-		$(".work-entry:last").append(formattedWorkDescription);	
-
-	}
-}
-
-displayWork();
-
-// End Display Work Section //
-
-// Display Projects Section //
-
-function displayProjects() {
-	for (project in projects.projects) {
-		$("#projects").append(HTMLprojectStart);
-		
-		var formattedTitle = HTMLprojectTitle.replace("%data%",projects.projects[project].title);
-		$(".project-entry:last").append(formattedTitle);
-
-		var formattedDates = HTMLprojectDates.replace("%data%",projects.projects[project].dates);
-		$(".project-entry:last").append(formattedDates);
-
-		var formattedDescription = HTMLprojectDescription.replace("%data%",projects.projects[project].description);
-		$(".project-entry:last").append(formattedDescription);
-
-		if (projects.projects[project].images.length > 0) {
-			for (image in projects.projects[project].images);
-				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
-				$(".project-entry:last").append(formattedImage);
-		}
-	}
-}
-
-displayProjects();
-
-// End Display Projects Section //
-
-// Display Education Section //
-
 function displayEducation() {
 
 	for (school in education.schools) {
@@ -318,6 +200,134 @@ displayEducation();
 
 // End Display Education Section //
 
+
+// Display Projects Section //
+
+var projects = {
+	"projects": [
+		{
+		"title": "Website Mockup",
+		"dates": "November 2014",
+		"description": "Developed webpage from sample design.",
+		"images": ["images/mug.png"]
+		},
+			
+		{
+		"title": "NJ Mystery Company Website",
+		"dates": "June 2014",
+		"description": "Created new website for new business.",
+		"images": ["images/njmc.jpg"]
+		},
+
+		{
+		"title": "Somerset Vally Players",
+		"dates": "March 2008",
+		"description" : "Programmed and implemented online theater ticketing system.  Also mainted pre-designed organization website.",
+		"images": ["images/svp.jpg"]
+		}
+	]
+};
+
+projects.display = function() {
+	for (project in projects.projects) {
+		$("#projects").append(HTMLprojectStart);
+		
+		var formattedTitle = HTMLprojectTitle.replace("%data%",projects.projects[project].title);
+		$(".project-entry:last").append(formattedTitle);
+
+		var formattedDates = HTMLprojectDates.replace("%data%",projects.projects[project].dates);
+		$(".project-entry:last").append(formattedDates);
+
+		var formattedDescription = HTMLprojectDescription.replace("%data%",projects.projects[project].description);
+		$(".project-entry:last").append(formattedDescription);
+
+		if (projects.projects[project].images.length > 0) {
+			for (image in projects.projects[project].images);
+				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+				$(".project-entry:last").append(formattedImage);
+		}
+	}
+}
+
+projects.display();
+
+// End Display Projects Section //
+
+
+// Display Work Section //
+
+	var work = {
+		"jobs": [
+			{
+			"employer": "AT&T", 
+			"title": "Lead Financial Analyst",
+			"dates": "2005 - present",
+			"location": "Bedminster, NJ",
+			"description": "Responsible for developement of short-term and long-term financial planning for two supply chain organizations.  Also repsonsbile for html coding of there financial team websites."
+			},
+
+			{
+			"employer": "AT&T", 
+			"title": "Contract Employee - Budget Manager",
+			"dates": "2003 - 2005",
+			"location": "Bedminster, NJ",
+			"description": "Responsible for developement of budgets and monthly financial reporting."
+			},
+		
+			{
+			"employer": "Alliente", 
+			"title": "Assistant Controller",
+			"dates": "2000 - 2003",
+			"location": "Morris Plains, NJ",
+			"description": "Responsible for monthly bookclose activities and annual budgeting process."
+			},
+
+			{
+			"employer": "Lucent Technologies", 
+			"title": "SAP Implementation Manager",
+			"location": "Greensboro, NC",
+			"dates": "1996 - 2000",
+			"description": "Interfaced between project management, finance orgnizations, SAP programmers, and conlsutants to ensure all financial requirements were identified and programmed appropriately in the Lucent Technoligies implementation of the SAP software."
+			},
+
+			{
+			"employer": "AT&T", 
+			"title": "Corporate Reporting and Planning Manager",
+			"dates": "1988 - 1996",
+			"location": "Morristown, NJ",
+			"description": "Responsible for all monthly reporting and annual financial planning."
+			}
+		] 
+	};
+
+function displayWork() 	{
+
+	for (job in work.jobs) {
+		$("#workExperience").append(HTMLworkStart);
+
+		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+		var formattedEmployerTitle = formattedEmployer + formattedTitle;
+
+		$(".work-entry:last").append(formattedEmployerTitle);
+
+		var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+		$(".work-entry:last").append(formattedWorkDates);
+	
+		var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+		$(".work-entry:last").append(formattedWorkLocation);
+
+		var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+		$(".work-entry:last").append(formattedWorkDescription);	
+
+		}
+	}
+
+displayWork();
+
+// End Display Work Section //
+
+
 // Add Map //
 
 $("#mapDiv").append(googleMap);
@@ -329,6 +339,8 @@ $("#footerContacts").append(formattedMobile);
 $("#footerContacts").append(formattedLocation);
 $("#footerContacts").append(formattedTwitter);
 $("#footerContacts").append(formattedGitHub);
+
+// Add Internationalize Name //
 
 function inName(name) {
   name = bio.name.trim().split(" ");
